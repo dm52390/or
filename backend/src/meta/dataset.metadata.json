@@ -1,0 +1,216 @@
+{
+    "autor": "Domagoj Mutić",
+    "verzija": "v1.0",
+    "naziv": "Atletski stadioni",
+    "jezik": "hrvatski",
+    "datum_objave": "2023-10-31",
+    "datum_izmjene": "2023-10-31",
+    "geografsko_podrucje": "Hrvatska",
+    "tema": ["Sportski objekti", "Atletski stadioni"],
+    "licencija": "CC BY 4.0",
+    "podaci": [
+        {
+            "atribut": "naziv",
+            "opis": "ime atletskog stadiona",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "tip",
+            "opis": "tip atletskog stadiona. Može biti 'Specijalistički' (namijenjen prvenstveno i jedino atletici) ili 'Integrirani'. Uz to može biti 'dvorana' ili 'stadion'. Posebna kategorija je 'Školsko igralište'.",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "duzina_staze",
+            "opis": "dužina atletske staze. Mjerna jedinica je metar. Predstavlja dužinu kruga kod kružnih staza (200m i više) ili dužinu ravnine staze.",
+            "tip": "int",
+            "mjerna_jedinica": "m",
+            "standard": ""
+        },
+        {
+            "atribut": "broj_staza",
+            "opis": "broj atletskih staza",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "broj_skakalista_dalj",
+            "opis": "broj jama za skok u dalj (+ pripadajuće zaletište)",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "broj_skakalista_vis",
+            "opis": "broj strunjača za skok u vis (+ pripadajuće zaletište)",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "broj_skakalista_motka",
+            "opis": "broj strunjača za skok s motkom (+ pripadajuće zaletište)",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "broj_bacalista_koplje",
+            "opis": "broj ravnina (zaletišta) za bacanje koplja",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "broj_bacalista_kugla",
+            "opis": "broj krugova za bacanje kugle",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "broj_bacalista_duga_krug",
+            "opis": "broj krugova za bacanje diska i/ili kladiva (bez obzira imaju li pripadajuću mrežu)",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "dozvoljeno_bacanje",
+            "opis": "oznaka true (t) ili false (f) koja označava dopuštenje za korištenje bacališta. Bacanje na bacalištima za kuglu je uglavnom dopušteno bez obzira na oznaku.",
+            "tip": "boolean",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "kapacitet_tribine",
+            "opis": "broj sjedećih mjesta na tribini. Ne uključuje privremeno montirane tribine. (može biti nedefiniran)",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "povrsina_kompleksa",
+            "opis": "površina stadiona, tribina i ostalih okolnih objekata. Može uključivati i bazene, teniske terene... koji pripadaju istom kompleksu",
+            "tip": "int",
+            "mjerna_jedinica": "m²",
+            "standard": ""
+        },
+        {
+            "atribut": "drzava",
+            "opis": "država u kojoj se atletski stadion nalazi",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "grad",
+            "opis": "grad u kojem se atletski stadion nalazi",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "ulica",
+            "opis": "ulica u kojoj se atletski stadion nalazi",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "broj",
+            "opis": "kućni broj na kojem se atletski stadion nalazi (nije uvijek primjenjivo tj. može biti nedefiniran)",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "geo_sirina",
+            "opis": "geografska širina na kojoj se nalazi središte atletskog stadiona",
+            "tip": "float",
+            "mjerna_jedinica": "N",
+            "standard": "WGS84"
+        },
+        {
+            "atribut": "geo_duzina",
+            "opis": "geografska dužina na kojoj se nalazi središte atletskog stadiona",
+            "tip": "float",
+            "mjerna_jedinica": "E",
+            "standard": "WGS84"
+        },
+        {
+            "atribut": "nadmorska_visina",
+            "opis": "nadmorska visina na kojoj se nalazi središte atletskog stadiona u metrima.",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "kratica",
+            "opis": "identifikator kluba koji koristi atletski stadion",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "klub_naziv",
+            "opis": "ime kluba koji koristi atletski stadion",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "telefon",
+            "opis": "telefonski broj kluba koji koristi atletski stadion (može biti nedefinirano)",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "email",
+            "opis": "email adresa kluba koji koristi atletski stadion (može biti nedefinirano)",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "web_stranica",
+            "opis": "web stranica kluba koji koristi atletski stadion (može biti nedefinirano)",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "klub_drzava",
+            "opis": "država u kojoj klub djeluje",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "klub_grad",
+            "opis": "grad u kojem klub djeluje",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "klub_ulica",
+            "opis": "ulica na kojoj je klub registriran",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
+        {
+            "atribut": "klub_broj",
+            "opis": "kućni broj na kojem je klub registriran",
+            "tip": "string",
+            "mjerna_jedinica": "",
+            "standard": ""
+        }
+    ]
+}

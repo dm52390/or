@@ -1,1 +1,3 @@
 dm52390,or,baza_v1
+dm52390,or,frontend_v1
+dm52390,or,backend_v1
