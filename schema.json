@@ -3,11 +3,11 @@
     "$id": "https://github.com/dm52390/or/blob/main/atletski_stadioni.json",
     "type": "array",
     "title": "Atletski stadioni u hrvatskoj",
-	"description": "Skup podataka o atletskim stadionima za potrebe laboratorijske vježbe iz OR"
+	"description": "Skup podataka o atletskim stadionima za potrebe laboratorijske vježbe iz OR",
     "items": {
         "type": "object",
         "title": "Stadion",
-		"description": "Objekt koji sadrži sve podatke o jednom stadionu"
+		"description": "Objekt koji sadrži sve podatke o jednom stadionu",
         "required": [
             "naziv",
             "tip",
@@ -30,7 +30,7 @@
             "naziv": {
                 "type": "string",
                 "title": "naziv",
-				"description": "Ime atletskog stadiona"
+				"description": "Ime atletskog stadiona",
                 "examples": [
                     "Sportski park Mladost",
                     "Mladost",
@@ -58,7 +58,7 @@
             "tip": {
                 "type": "string",
                 "title": "tip",
-				"description": "Tip atletskog stadiona. Može biti 'Specijalistički' (namijenjen prvenstveno i jedino atletici) ili 'Integrirani'. Uz to može biti 'dvorana' ili 'stadion'. Posebna kategorija je 'Školsko igralište'."
+				"description": "Tip atletskog stadiona. Može biti 'Specijalistički' (namijenjen prvenstveno i jedino atletici) ili 'Integrirani'. Uz to može biti 'dvorana' ili 'stadion'. Posebna kategorija je 'Školsko igralište'.",
                 "examples": [
                     "Specijalistički stadioni",
                     "Integrirani stadioni",
@@ -70,7 +70,7 @@
             "duzina_staze": {
                 "type": "integer",
                 "title": "duzina_staze",
-				"description": "Dužina atletske staze. Mjerna jedinica je metar. Predstavlja dužinu kruga kod kružnih staza (200m i više) ili dužinu ravnine staze."
+				"description": "Dužina atletske staze. Mjerna jedinica je metar. Predstavlja dužinu kruga kod kružnih staza (200m i više) ili dužinu ravnine staze.",
                 "examples": [
                     400,
                     200,
@@ -82,7 +82,7 @@
             "broj_staza": {
                 "type": "integer",
                 "title": "broj_staza",
-				"description": "Broj atletskih staza"
+				"description": "Broj atletskih staza",
                 "examples": [
                     8,
                     6,
@@ -92,7 +92,7 @@
             "broj_skakalista_dalj": {
                 "type": "integer",
                 "title": "broj_skakalista_dalj",
-				"description": "Broj jama za skok u dalj (+ pripadajuće zaletište)"
+				"description": "Broj jama za skok u dalj (+ pripadajuće zaletište)",
                 "examples": [
                     5,
                     2,
@@ -104,7 +104,7 @@
             "broj_skakalista_vis": {
                 "type": "integer",
                 "title": "broj_skakalista_vis",
-				"description": "Broj strunjača za skok u vis (+ pripadajuće zaletište)"
+				"description": "Broj strunjača za skok u vis (+ pripadajuće zaletište)",
                 "examples": [
                     1,
                     0
@@ -113,7 +113,7 @@
             "broj_skakalista_motka": {
                 "type": "integer",
                 "title": "broj_skakalista_motka",
-				"description": "Broj strunjača za skok s motkom (+ pripadajuće zaletište)"
+				"description": "Broj strunjača za skok s motkom (+ pripadajuće zaletište)",
                 "examples": [
                     1,
                     0
@@ -122,7 +122,7 @@
             "broj_bacalista_koplje": {
                 "type": "integer",
                 "title": "broj_bacalista_koplje",
-				"description": "Broj ravnina (zaletišta) za bacanje koplja"
+				"description": "Broj ravnina (zaletišta) za bacanje koplja",
                 "examples": [
                     1,
                     2,
@@ -133,7 +133,7 @@
             "broj_bacalista_kugla": {
                 "type": "integer",
                 "title": "broj_bacalista_kugla",
-				"description": "Broj krugova za bacanje kugle"
+				"description": "Broj krugova za bacanje kugle",
                 "examples": [
                     3,
                     1,
@@ -144,7 +144,7 @@
             "broj_bacalista_duga_krug": {
                 "type": "integer",
                 "title": "broj_bacalista_duga_krug",
-				"description": "Broj krugova za bacanje diska i/ili kladiva (bez obzira imaju li pripadajuću mrežu)"
+				"description": "Broj krugova za bacanje diska i/ili kladiva (bez obzira imaju li pripadajuću mrežu)",
                 "examples": [
                     5,
                     4,
@@ -158,7 +158,7 @@
             "dozvoljeno_bacanje": {
                 "type": "boolean",
                 "title": "dozvoljeno_bacanje",
-				"description": "Oznaka true (t) ili false (f) koja označava dopuštenje za korištenje bacališta. Bacanje na bacalištima za kuglu je uglavnom dopušteno bez obzira na oznaku."
+				"description": "Oznaka true (t) ili false (f) koja označava dopuštenje za korištenje bacališta. Bacanje na bacalištima za kuglu je uglavnom dopušteno bez obzira na oznaku.",
                 "examples": [
                     true,
                     false
@@ -170,7 +170,7 @@
                     "null"
                 ],
                 "title": "kapacitet_tribine",
-				"description": "Broj sjedećih mjesta na tribini. Ne uključuje privremeno montirane tribine. (može biti nedefiniran)"
+				"description": "Broj sjedećih mjesta na tribini. Ne uključuje privremeno montirane tribine. (može biti nedefiniran)",
                 "examples": [
                     1726,
                     5000,
@@ -193,7 +193,7 @@
             "povrsina_kompleksa": {
                 "type": "integer",
                 "title": "povrsina_kompleksa",
-				"description": "Površina stadiona, tribina i ostalih okolnih objekata. Može uključivati i bazene, teniske terene... koji pripadaju istom kompleksu"
+				"description": "Površina stadiona, tribina i ostalih okolnih objekata. Može uključivati i bazene, teniske terene... koji pripadaju istom kompleksu",
                 "examples": [
                     151793,
                     87328,
@@ -221,7 +221,7 @@
             "adresa": {
                 "type": "object",
                 "title": "adresa",
-				"description": "Adresa na kojoj se stadion nalazi"
+				"description": "Adresa na kojoj se stadion nalazi",
                 "required": [
                     "drzava",
                     "grad",
@@ -232,7 +232,7 @@
                     "drzava": {
                         "type": "string",
                         "title": "drzava",
-				"description": "Država u kojoj se atletski stadion nalazi"
+				"description": "Država u kojoj se atletski stadion nalazi",
                         "examples": [
                             "Hrvatska"
                         ]
@@ -240,7 +240,7 @@
                     "grad": {
                         "type": "string",
                         "title": "grad",
-				"description": "Grad u kojem se atletski stadion nalazi"
+				"description": "Grad u kojem se atletski stadion nalazi",
                         "examples": [
                             "Zagreb",
                             "Čakovec",
@@ -263,7 +263,7 @@
                     "ulica": {
                         "type": "string",
                         "title": "ulica",
-				"description": "Ulica u kojoj se atletski stadion nalazi	"
+				"description": "Ulica u kojoj se atletski stadion nalazi	",
                         "examples": [
                             "Jarunska",
                             "Športska ulica",
@@ -294,7 +294,7 @@
                             "null"
                         ],
                         "title": "broj",
-				"description": "Kućni broj na kojem se atletski stadion nalazi (nije uvijek primjenjivo tj. može biti nedefiniran)"
+				"description": "Kućni broj na kojem se atletski stadion nalazi (nije uvijek primjenjivo tj. može biti nedefiniran)",
                         "examples": [
                             "1b",
                             "2",
@@ -444,7 +444,7 @@
             "geo_lokacija": {
                 "type": "object",
                 "title": "geo_lokacija",
-				"description": "Geografske koordinate na kojim se stadion nalazi"
+				"description": "Geografske koordinate na kojim se stadion nalazi",
                 "required": [
                     "geo_sirina",
                     "geo_duzina",
@@ -454,7 +454,7 @@
                     "geo_sirina": {
                         "type": "number",
                         "title": "geo_sirina",
-						"description": "Geografska širina na kojoj se nalazi središte atletskog stadiona"
+						"description": "Geografska širina na kojoj se nalazi središte atletskog stadiona",
                         "examples": [
                             45.782639,
                             46.391512,
@@ -482,7 +482,7 @@
                     "geo_duzina": {
                         "type": "number",
                         "title": "geo_duzina",
-						"description": "Geografska dužina na kojoj se nalazi središte atletskog stadiona"
+						"description": "Geografska dužina na kojoj se nalazi središte atletskog stadiona",
                         "examples": [
                             15.94305,
                             16.422361,
@@ -513,7 +513,7 @@
                             "null"
                         ],
                         "title": "nadmorska_visina",
-						"description": "Nadmorska visina na kojoj se nalazi središte atletskog stadiona u metrima."
+						"description": "Nadmorska visina na kojoj se nalazi središte atletskog stadiona u metrima.",
                         "examples": [
                             114,
                             162,
@@ -647,11 +647,11 @@
                     "null"
                 ],
                 "title": "klubovi",
-				"description": "Skup klubova koji koristi određeni stadion"
+				"description": "Skup klubova koji koristi određeni stadion",
                 "items": {
                     "type": "object",
                     "title": "klub",
-					"description": "Podaci o atletskom klubu"
+					"description": "Podaci o atletskom klubu",
                     "required": [
                         "kratica",
                         "klub_naziv",
@@ -664,7 +664,7 @@
                         "kratica": {
                             "type": "string",
                             "title": "kratica",
-							"description": "Identifikator kluba koji koristi atletski stadion"
+							"description": "Identifikator kluba koji koristi atletski stadion",
                             "examples": [
                                 "MZ",
                                 "AGR",
@@ -694,7 +694,7 @@
                         "klub_naziv": {
                             "type": "string",
                             "title": "klub_naziv",
-							"description": "Ime kluba koji koristi atletski stadion"
+							"description": "Ime kluba koji koristi atletski stadion",
                             "examples": [
                                 "HAAK Mladost",
                                 "AK Agram",
@@ -724,7 +724,7 @@
                         "telefon": {
                             "type": "string",
                             "title": "telefon",
-							"description": "Telefonski broj kluba koji koristi atletski stadion (može biti nedefinirano)"
+							"description": "Telefonski broj kluba koji koristi atletski stadion (može biti nedefinirano)",
                             "examples": [
                                 "01 3025 912",
                                 "01 30 14 885",
@@ -754,7 +754,7 @@
                         "email": {
                             "type": "string",
                             "title": "email",
-							"description": "Email adresa kluba koji koristi atletski stadion (može biti nedefinirano)"
+							"description": "Email adresa kluba koji koristi atletski stadion (može biti nedefinirano)",
                             "examples": [
                                 "mz@haak-mladost.hr",
                                 "agram@atletskiklubagram.hr",
@@ -787,7 +787,7 @@
                                 "null"
                             ],
                             "title": "web_stranica",
-							"description": "Web stranica kluba koji koristi atletski stadion (može biti nedefinirano)"
+							"description": "Web stranica kluba koji koristi atletski stadion (može biti nedefinirano)",
                             "examples": [
                                 "https://www.haak-mladost.com",
                                 "https://www.atletskiklubagram.hr/",
@@ -808,7 +808,7 @@
                         "adresa": {
                             "type": "object",
                             "title": "adresa",
-							"description": "Adresa na kojoj se nalazi određeni atletski klub"
+							"description": "Adresa na kojoj se nalazi određeni atletski klub",
                             "required": [
                                 "klub_drzava",
                                 "klub_grad",
@@ -819,7 +819,7 @@
                                 "klub_drzava": {
                                     "type": "string",
                                     "title": "klub_drzava",
-									"description": "Država u kojoj klub djeluje"
+									"description": "Država u kojoj klub djeluje",
                                     "examples": [
                                         "Hrvatska"
                                     ]
@@ -827,7 +827,7 @@
                                 "klub_grad": {
                                     "type": "string",
                                     "title": "klub_grad",
-									"description": "Grad u kojem klub djeluje"
+									"description": "Grad u kojem klub djeluje",
                                     "examples": [
                                         "Zagreb",
                                         "Čakovec",
@@ -849,7 +849,7 @@
                                 "klub_ulica": {
                                     "type": "string",
                                     "title": "klub_ulica",
-									"description": "Ulica na kojoj je klub registriran"
+									"description": "Ulica na kojoj je klub registriran",
                                     "examples": [
                                         "Jarunska",
                                         "Športska ulica",
@@ -876,7 +876,7 @@
                                 "klub_broj": {
                                     "type": "string",
                                     "title": "klub_broj",
-									"description": "Kućni broj na kojem je klub registriran"
+									"description": "Kućni broj na kojem je klub registriran",
                                     "examples": [
                                         "1b",
                                         "2",
