@@ -1,6 +1,5 @@
 import { pgTable, varchar, serial, foreignKey, integer, boolean, numeric, primaryKey } from "drizzle-orm/pg-core"
 import { relations } from 'drizzle-orm';
-import { sql } from "drizzle-orm"
 
 
 export const adrese = pgTable("adrese", {

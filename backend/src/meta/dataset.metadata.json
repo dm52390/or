@@ -1,6 +1,6 @@
 {
     "autor": "Domagoj Mutić",
-    "verzija": "v1.0",
+    "verzija": "1.1",
     "naziv": "Atletski stadioni",
     "jezik": "hrvatski",
     "datum_objave": "2023-10-31",
@@ -9,6 +9,13 @@
     "tema": ["Sportski objekti", "Atletski stadioni"],
     "licencija": "CC BY 4.0",
     "podaci": [
+        {
+            "atribut": "stadion_id",
+            "opis": "jedinstveni identifikator stadiona",
+            "tip": "int",
+            "mjerna_jedinica": "",
+            "standard": ""
+        },
         {
             "atribut": "naziv",
             "opis": "ime atletskog stadiona",

@@ -1,12 +1,10 @@
 import { sql } from "drizzle-orm";
 import { db } from "./index";
-import { PgDialect } from 'drizzle-orm/pg-core';
-import * as schema from './schema'
 import convert from "../helpers/CSVtoJSON";
 
 const getAllCSV = sql.join([
     sql`SELECT * FROM(`,
-    sql`SELECT stadioni.naziv, tip, duzina_staze, broj_staza,`,
+    sql`SELECT stadioni.stadion_id, stadioni.naziv, tip, duzina_staze, broj_staza,`,
     sql`broj_skakalista_dalj, broj_skakalista_vis,`,
     sql`broj_skakalista_motka, broj_bacalista_koplje,`,
     sql`broj_bacalista_kugla, broj_bacalista_duga_krug,`,

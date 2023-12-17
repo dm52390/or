@@ -37,7 +37,7 @@
   <title>Atletski stadioni u hrvatskoj</title>
   <meta charset="UTF-8">
   <meta name="Autor" content="Domagoj Mutić">
-  <meta name="Verzija skupa" content="1.0">
+  <meta name="Verzija skupa" content="1.1">
   <meta name="Naziv skupa" content="Atletski stadioni u hrvatskoj">
   <meta name="Jezik skupa" content="hrvatski">
   <meta name="Datum objave" content="2023-10-31">

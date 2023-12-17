@@ -8,6 +8,13 @@ ENV PG_USER postgres
 ENV PG_PASSWORD mojalozinka
 ENV PG_DATABASE ORbaza
 
+# ENV PORT 8080
+# ENV PG_HOST localhost
+# ENV PG_PORT 5433
+# ENV PG_USER postgres
+# ENV PG_PASSWORD bazepodataka
+# ENV PG_DATABASE or-lab
+
 RUN mkdir -p /opt/app
 RUN mkdir -p /opt/app/tmp
 WORKDIR /opt/app

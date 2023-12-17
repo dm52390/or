@@ -3,7 +3,7 @@ Repozitorij za laboratorijske vježbe
 ## Autor
 Domagoj Mutić
 ## Verzija skupa
-1.0
+1.1
 ## Naziv skupa
 Atletski stadioni u hrvatskoj
 ## Jezik skupa

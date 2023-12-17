@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllData, getFilteredData } from '../controllers/search';
+import { getFilteredData } from '../controllers/search';
 import { downloadFilteredDataCSV, downloadFilteredDataJSON } from '../controllers/download';
 
 const router = express.Router();

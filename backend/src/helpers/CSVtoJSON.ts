@@ -3,6 +3,7 @@ export default function convert(data: {[key: string]: any}[]) {
     data = data.map(d => {
 
         const obj = {
+            stadion_id: d.stadion_id,
             naziv: d.naziv,
             tip: d.tip,
             duzina_staze: d.duzina_staze,
