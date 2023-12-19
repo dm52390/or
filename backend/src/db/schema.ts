@@ -1,4 +1,4 @@
-import { pgTable, varchar, serial, foreignKey, integer, boolean, numeric, primaryKey } from "drizzle-orm/pg-core"
+import { pgTable, varchar, serial, foreignKey, integer, boolean, numeric, primaryKey, alias } from "drizzle-orm/pg-core"
 import { relations } from 'drizzle-orm';
 
 
@@ -7,58 +7,60 @@ export const adrese = pgTable("adrese", {
 	drzava: varchar("drzava", { length: 50 }).notNull(),
 	ulica: varchar("ulica", { length: 100 }).notNull(),
 	broj: varchar("broj", { length: 15 }),
-	adresaId: serial("adresa_id").primaryKey().notNull(),
+	adresa_id: serial("adresa_id").primaryKey().notNull(),
 });
+
+export const adreseKlub = alias(adrese, "adreseKlub")
 
 export const stadioni = pgTable("stadioni", {
 	naziv: varchar("naziv", { length: 100 }).notNull(),
 	tip: varchar("tip", { length: 50 }).notNull(),
-	duzinaStaze: integer("duzina_staze").notNull(),
-	brojStaza: integer("broj_staza").notNull(),
-	brojSkakalistaDalj: integer("broj_skakalista_dalj").notNull(),
-	brojSkakalistaVis: integer("broj_skakalista_vis").notNull(),
-	brojSkakalistaMotka: integer("broj_skakalista_motka").notNull(),
-	brojBacalistaKoplje: integer("broj_bacalista_koplje").notNull(),
-	brojBacalistaKugla: integer("broj_bacalista_kugla").notNull(),
-	stadionId: serial("stadion_id").primaryKey().notNull(),
-	kapacitetTribine: integer("kapacitet_tribine"),
-	povrsinaKompleksa: integer("povrsina_kompleksa"),
-	dozvoljenoBacanje: boolean("dozvoljeno_bacanje").notNull(),
-	brojBacalistaDugaKrug: integer("broj_bacalista_duga_krug").notNull(),
-	adresaId: serial("adresa_id").notNull().references(() => adrese.adresaId),
-	lokacijaId: serial("lokacija_id").notNull().references(() => lokacije.lokacijaId),
+	duzina_staze: integer("duzina_staze").notNull(),
+	broj_staza: integer("broj_staza").notNull(),
+	broj_skakalista_dalj: integer("broj_skakalista_dalj").notNull(),
+	broj_skakalista_vis: integer("broj_skakalista_vis").notNull(),
+	broj_skakalista_motka: integer("broj_skakalista_motka").notNull(),
+	broj_bacalista_koplje: integer("broj_bacalista_koplje").notNull(),
+	broj_bacalista_kugla: integer("broj_bacalista_kugla").notNull(),
+	stadion_id: serial("stadion_id").primaryKey().notNull(),
+	kapacitet_tribine: integer("kapacitet_tribine"),
+	povrsina_kompleksa: integer("povrsina_kompleksa"),
+	dozvoljeno_bacanje: boolean("dozvoljeno_bacanje").notNull(),
+	broj_bacalista_duga_krug: integer("broj_bacalista_duga_krug").notNull(),
+	adresa_id: serial("adresa_id").notNull().references(() => adrese.adresa_id),
+	lokacija_id: serial("lokacija_id").notNull().references(() => lokacije.lokacija_id),
 });
 
 export const lokacije = pgTable("lokacije", {
-	geoSirina: numeric("geo_sirina").notNull(),
-	geoDuzina: numeric("geo_duzina").notNull(),
-	nadmorskaVisina: numeric("nadmorska_visina"),
-	lokacijaId: serial("lokacija_id").primaryKey().notNull(),
+	geo_sirina: numeric("geo_sirina").notNull(),
+	geo_duzina: numeric("geo_duzina").notNull(),
+	nadmorska_visina: numeric("nadmorska_visina"),
+	lokacija_id: serial("lokacija_id").primaryKey().notNull(),
 });
 
 export const klubovi = pgTable("klubovi", {
-	klubId: varchar("klub_id", { length: 8 }).primaryKey().notNull(),
+	klub_id: varchar("klub_id", { length: 8 }).primaryKey().notNull(),
 	naziv: varchar("naziv", { length: 100 }).notNull(),
 	telefon: varchar("telefon", { length: 15 }),
 	email: varchar("email", { length: 50 }),
-	webStranica: varchar("web_stranica", { length: 200 }),
-	adresaId: serial("adresa_id").notNull().references(() => adrese.adresaId),
+	web_stranica: varchar("web_stranica", { length: 200 }),
+	adresa_id: serial("adresa_id").notNull().references(() => adrese.adresa_id),
 });
 
 export const koristi = pgTable("koristi", {
-	stadionId: serial("stadion_id").notNull().references(() => stadioni.stadionId),
-	klubId: varchar("klub_id", { length: 8 }).notNull().references(() => klubovi.klubId),
+	stadion_id: serial("stadion_id").notNull().references(() => stadioni.stadion_id),
+	klub_id: varchar("klub_id", { length: 8 }).notNull().references(() => klubovi.klub_id),
 },
 (table) => {
 	return {
-		koristiPkey: primaryKey({ columns: [table.stadionId, table.klubId], name: "koristi_pkey"})
+		koristiPkey: primaryKey({ columns: [table.stadion_id, table.klub_id], name: "koristi_pkey"})
 	}
 });
 
 export const klubovi_adrese = relations(klubovi, ({ one }) => ({
 	adresa: one(adrese, {
-		fields: [klubovi.adresaId],
-		references: [adrese.adresaId]
+		fields: [klubovi.adresa_id],
+		references: [adrese.adresa_id]
 	}),
 }));
 
@@ -68,15 +70,15 @@ export const adrese_klubovi = relations(adrese, ({ many }) => ({
 
 export const stadioni_adrese = relations(stadioni, ({ one }) => ({
 	adresa: one(adrese, {
-		fields: [stadioni.adresaId],
-		references: [adrese.adresaId]
+		fields: [stadioni.adresa_id],
+		references: [adrese.adresa_id]
 	}),
 }));
 
 export const stadioni_lokacije = relations(stadioni, ({ one }) => ({
 	geo_lokacija: one(lokacije, {
-		fields: [stadioni.lokacijaId],
-		references: [lokacije.lokacijaId]
+		fields: [stadioni.lokacija_id],
+		references: [lokacije.lokacija_id]
 	}),
 }));
 
@@ -90,11 +92,11 @@ export const klubovi_koristi = relations(klubovi, ({ many }) => ({
 
 export const koristi_veza = relations(koristi, ({ one }) => ({
 	stadioni: one(stadioni, {
-		fields: [koristi.stadionId],
-		references: [stadioni.stadionId]
+		fields: [koristi.stadion_id],
+		references: [stadioni.stadion_id]
 	}),
 	klubovi: one(klubovi, {
-		fields: [koristi.klubId],
-		references: [klubovi.klubId]
+		fields: [koristi.klub_id],
+		references: [klubovi.klub_id]
 	}),
 }));

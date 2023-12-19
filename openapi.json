@@ -1,0 +1,920 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Atletski stadioni u hrvatskoj - REST API",
+    "description": "REST API za potrebe predaje laboratorijske vježbe iz Otvorenih podataka",
+    "contact": {
+      "name": "Domagoj Mutić",
+      "email": "domagoj.mutic@fer.hr"
+    },
+    "license": {
+      "name": "CC-BY-4.0 license",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "adresa":{
+        "type": "object",
+        "required": ["drzava", "grad", "ulica"],
+        "properties": {
+          "drzava":{
+            "type": "string"
+          },
+          "grad":{
+            "type": "string"
+          },
+          "ulica":{
+            "type": "string"
+          },
+          "broj":{
+            "type": "string"
+          }
+        },
+        "example":{
+          "drzava": "Hrvatska",
+          "grad": "Zagreb",
+          "ulica": "Jarunska",
+          "broj": "5b"
+        }
+      },
+      "adresa_klub":{
+        "type": "object",
+        "required": ["drzava", "grad", "ulica"],
+        "properties": {
+          "klub_drzava":{
+            "type": "string"
+          },
+          "klub_grad":{
+            "type": "string"
+          },
+          "klub_ulica":{
+            "type": "string"
+          },
+          "klub_broj":{
+            "type": "string"
+          }
+        },
+        "example":{
+          "klub_drzava": "Hrvatska",
+          "klub_grad": "Zagreb",
+          "klub_ulica": "Jarunska",
+          "klub_broj": "5b"
+        }
+      },
+      "lokacija":{
+        "type": "object",
+        "required": ["geo_sirina", "geo_duzina"],
+        "properties": {
+          "geo_sirina":{
+            "type": "number"
+          },
+          "geo_duzina":{
+            "type": "number"
+          },
+          "nadmorska_visina":{
+            "type": "number"
+          }
+        }
+      },
+      "klub":{
+        "type": "object",
+        "properties": {
+          "kratica":{
+            "type": "string",
+            "example": "MZ"
+          },
+          "klub_naziv":{
+            "type": "string",
+            "example": "Mladost"
+          },
+          "telefon":{
+            "type": "string",
+            "example": "091234567"
+          },
+          "email":{
+            "type": "string",
+            "example": "mz@haak.hr"
+          },
+          "web_stranica":{
+            "type": "string",
+            "example": "https://mz.com/"
+          },
+          "adresa":{
+            "$ref": "#/components/schemas/adresa_klub"
+          }
+        }
+      },
+      "klub_id":{
+        "type": "object",
+        "properties": {
+          "klub_id":{
+            "type": "string",
+            "example": "MZ"
+          },
+          "naziv":{
+            "type": "string",
+            "example": "Mladost"
+          },
+          "telefon":{
+            "type": "string",
+            "example": "091234567"
+          },
+          "email":{
+            "type": "string",
+            "example": "mz@haak.hr"
+          },
+          "web_stranica":{
+            "type": "string",
+            "example": "https://mz.com/"
+          },
+          "adresa_id":{
+            "type": "number"
+          }
+        }
+      },
+      "stadion":{
+        "type": "object",
+        "required": ["naziv", "tip", "duzina_staze", "broj_staza", "broj_skakalista_dalj", "broj_skakalista_vis", "broj_skakalista_motka", "broj_bacalista_koplje", "broj_bacalista_kugla", "dozvoljeno_bacanje", "broj_bacalista_duga_krug"],
+        "properties": {
+          "naziv":{
+            "type": "string",
+            "description": "Naziv stadiona",
+            "example": "SRC Mladost"
+          },
+          "tip":{
+            "type": "string",
+            "description": "tip stadiona",
+            "example": "Integrirani"
+          },
+          "duzina_staze":{
+            "type": "number",
+            "description": "duzina staze u metrima",
+            "example": 400
+          },
+          "broj_staza":{
+            "type": "number",
+            "example": 8
+          },
+          "broj_skakalista_dalj":{
+            "type": "number"
+          },
+          "broj_skakalista_vis":{
+            "type": "number"
+          },
+          "broj_skakalista_motka":{
+            "type": "number"
+          },
+          "broj_bacalista_koplje":{
+            "type": "number"
+          },
+          "broj_bacalista_kugla":{
+            "type": "number"
+          },
+          "stadion_id":{
+            "type": "number"
+          },
+          "kapacitet_tribine":{
+            "type": "number"
+          },
+          "povrsina_kompleksa":{
+            "type": "number"
+          },
+          "dozvoljeno_bacanje":{
+            "type": "boolean"
+          },
+          "broj_bacalista_duga_krug":{
+            "type": "number"
+          },
+          "adresa":{
+            "$ref": "#/components/schemas/adresa"
+          },
+          "geo_lokacija":{
+            "$ref": "#/components/schemas/lokacija"
+          },
+          "klubovi":{
+            "type":"array",
+            "items":{
+              "$ref": "#/components/schemas/klub"
+            }
+          }
+        }
+      },
+      "stadion_stvori":{
+        "type": "object",
+        "required": ["naziv", "tip", "duzina_staze", "broj_staza", "broj_skakalista_dalj", "broj_skakalista_vis", "broj_skakalista_motka", "broj_bacalista_koplje", "broj_bacalista_kugla", "dozvoljeno_bacanje", "broj_bacalista_duga_krug"],
+        "properties": {
+          "naziv":{
+            "type": "string",
+            "description": "Naziv stadiona",
+            "example": "SRC Mladost"
+          },
+          "tip":{
+            "type": "string",
+            "description": "tip stadiona",
+            "example": "Integrirani"
+          },
+          "duzina_staze":{
+            "type": "number",
+            "description": "duzina staze u metrima",
+            "example": 400
+          },
+          "broj_staza":{
+            "type": "number",
+            "example": 8
+          },
+          "broj_skakalista_dalj":{
+            "type": "number"
+          },
+          "broj_skakalista_vis":{
+            "type": "number"
+          },
+          "broj_skakalista_motka":{
+            "type": "number"
+          },
+          "broj_bacalista_koplje":{
+            "type": "number"
+          },
+          "broj_bacalista_kugla":{
+            "type": "number"
+          },
+          "kapacitet_tribine":{
+            "type": "number"
+          },
+          "povrsina_kompleksa":{
+            "type": "number"
+          },
+          "dozvoljeno_bacanje":{
+            "type": "boolean"
+          },
+          "broj_bacalista_duga_krug":{
+            "type": "number"
+          },
+          "adresa":{
+            "$ref": "#/components/schemas/adresa"
+          },
+          "geo_lokacija":{
+            "$ref": "#/components/schemas/lokacija"
+          },
+          "klubovi":{
+            "description": "Popis identifikatora kluba",
+            "type":"array",
+            "items":{
+              "type": "string",
+              "example":"MZ"
+            }
+          }
+        }
+      },
+      "stadion_id":{
+        "example":{
+          "naziv": "SRC Mladost",
+          "tip": "Integrirani",
+          "duzina_staze": 400,
+          "broj_staza": 8,
+          "broj_skakalista_dalj": 0,
+          "broj_skakalista_vis": 0,
+          "broj_skakalista_motka": 0,
+          "broj_bacalista_koplje": 0,
+          "broj_bacalista_kugla": 0,
+          "stadion_id": 29,
+          "kapacitet_tribine": 0,
+          "povrsina_kompleksa": 0,
+          "dozvoljeno_bacanje": true,
+          "broj_bacalista_duga_krug": 0,
+          "adresa_id": 61,
+          "lokacija_id": 38
+        },
+        "type": "object",
+        "properties": {
+          "naziv":{
+            "type": "string",
+            "description": "Naziv stadiona",
+            "example": "SRC Mladost"
+          },
+          "tip":{
+            "type": "string",
+            "description": "tip stadiona",
+            "example": "Integrirani"
+          },
+          "duzina_staze":{
+            "type": "number",
+            "description": "duzina staze u metrima",
+            "example": 400
+          },
+          "broj_staza":{
+            "type": "number",
+            "example": 8
+          },
+          "broj_skakalista_dalj":{
+            "type": "number"
+          },
+          "broj_skakalista_vis":{
+            "type": "number"
+          },
+          "broj_skakalista_motka":{
+            "type": "number"
+          },
+          "broj_bacalista_koplje":{
+            "type": "number"
+          },
+          "broj_bacalista_kugla":{
+            "type": "number"
+          },
+          "stadion_id":{
+            "type": "number"
+          },
+          "kapacitet_tribine":{
+            "type": "number"
+          },
+          "povrsina_kompleksa":{
+            "type": "number"
+          },
+          "dozvoljeno_bacanje":{
+            "type": "boolean"
+          },
+          "broj_bacalista_duga_krug":{
+            "type": "number"
+          },
+          "adresa_id":{
+            "type": "number"
+          },
+          "lokacija_id":{
+            "type": "number"
+          }
+        }
+      }
+    },
+    "responses": {
+      "stadion":{
+        "description": "Lista stadiona",
+        "content": {
+          "application/json":{
+            "schema":{
+              "$ref":"#/components/schemas/stadion"
+            }
+          }
+        }
+      },
+      "stadioni_lista":{
+        "description": "Lista stadiona",
+        "content": {
+          "application/json":{
+            "schema":{
+              "type": "array",
+              "items":{
+                "$ref":"#/components/schemas/stadion"
+              }
+            }
+          }
+        }
+      },
+      "stadion_novi":{
+        "description": "Novo stvoreni stadion",
+        "content": {
+          "application/json":{
+            "schema":{
+              "$ref": "#/components/schemas/stadion_id"
+            }
+          }
+        }
+      },
+      "stadion_izdrisi":{
+        "description": "Briše stadion",
+        "content": {
+          "application/json":{
+            "schema":{
+              "type": "object",
+              "properties": {
+                "stadion_id":{
+                  "type": "number",
+                  "example":30
+                },
+                "deleted":{
+                  "type": "boolean",
+                  "example":true
+                }
+              }
+            }
+          }
+        }
+      },
+      "adresa_dohvati":{
+        "description": "Dohvaca adresu",
+        "content": {
+          "application/json":{
+            "schema":{
+              "$ref": "#/components/schemas/adresa"
+            }
+          }
+        }
+      },
+      "lokacija_dohvati":{
+        "description": "Dohvaca lokaciju",
+        "content": {
+          "application/json":{
+            "schema":{
+              "$ref": "#/components/schemas/lokacija"
+            }
+          }
+        }
+      },
+      "stadion_klubovi_dohvat":{
+        "description": "Dohvaca Klubova na stadionu",
+        "content": {
+          "application/json":{
+            "schema":{
+              "type": "array",
+              "items":{
+                "$ref":"#/components/schemas/klub"
+              }
+            }
+          }
+        }
+      },
+      "stadion_klubovi_brisanje":{
+        "description": "Brisanje klubova na stadionu",
+        "content": {
+          "application/json":{
+            "schema":{
+              "type": "object",
+              "properties": {
+                "stadion_id":{
+                  "type": "number"
+                },
+                "klub_id":{
+                  "type": "string"
+                },
+                "deleted":{
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "klubovi_lista":{
+        "description": "Lista klubova",
+        "content": {
+          "application/json":{
+            "schema":{
+              "type": "array",
+              "items":{
+                "$ref": "#/components/schemas/klub_id"
+              }
+            }
+          }
+        }
+      },
+      "klub":{
+        "description": "Lista stadiona",
+        "content": {
+          "application/json":{
+            "schema":{
+              "$ref": "#/components/schemas/klub_id"
+            }
+          }
+        }
+      },
+      "klub_adresa":{
+        "description": "Lista stadiona",
+        "content": {
+          "application/json":{
+            "schema":{
+              "$ref": "#/components/schemas/adresa_klub"
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "stvori_stadion":{
+        "content": {
+          "application/json":{
+            "schema":{
+              "$ref": "#/components/schemas/stadion_stvori"
+            }
+          }
+        }
+      },
+      "stvori_adresu":{
+        "content": {
+          "application/json":{
+            "schema":{
+              "$ref": "#/components/schemas/adresa"
+            }
+          }
+        }
+      },
+      "stvori_lokaciju":{
+        "content": {
+          "application/json":{
+            "schema":{
+              "$ref": "#/components/schemas/lokacija"
+            }
+          }
+        }
+      },
+      "dodaj_klubove":{
+        "content": {
+          "application/json":{
+            "schema":{
+              "type": "array",
+              "example":["MZ","AGR"],
+              "items":{
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/stadioni": {
+      "get": {
+        "summary": "Dohvat listu svih stadiona",
+        "description": "Vraća listu stadiona",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/stadioni_lista",
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "description": "Stvaranje novog stadiona",
+        "requestBody":{
+          "$ref": "#/components/requestBodies/stvori_stadion"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "$ref": "#/components/responses/stadion_novi"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/stadioni/{stadionId}": {
+      "get": {
+        "description": "Dohvat pojedinacnog stadiona",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/stadion"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "description": "Zamjena postojeceg stadiona novim",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody":{
+          "$ref": "#/components/requestBodies/stvori_stadion"
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "Brisanje stadiona",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/stadion_izdrisi"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/stadioni/{stadionId}/adresa": {
+      "get": {
+        "description": "Dohvat adrese stadiona",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/adresa_dohvati"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "description": "Zamjena adrese novom",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody":{
+          "$ref": "#/components/requestBodies/stvori_adresu"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/adresa_dohvati"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/stadioni/{stadionId}/lokacija": {
+      "get": {
+        "description": "Dohvat lokacije stadiona",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/lokacija_dohvati"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "description": "Zamjena lokacije stadiona novom",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody":{
+          "$ref": "#/components/requestBodies/stvori_lokaciju"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/lokacija_dohvati"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/stadioni/{stadionId}/klubovi": {
+      "get": {
+        "description": "Dohvat popisa klubova na određenom stadionu",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/stadion_klubovi_dohvat"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "description": "Zamjenjuje popis klubova",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody":{
+          "$ref": "#/components/requestBodies/dodaj_klubove"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/stadion_klubovi_dohvat"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/stadioni/{stadionId}/klubovi/{klubId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "klubId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Preusmjeravanje na resurs klub"
+          }
+        }
+      },
+      "delete": {
+        "description": "Brisanje kluba iz popisa stadiona",
+        "parameters": [
+          {
+            "name": "stadionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "klubId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/stadion_klubovi_brisanje"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/klubovi": {
+      "get": {
+        "description": "Dohvat liste klubova",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/klubovi_lista"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/klubovi/{klubId}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "klubId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/klub"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/klubovi/{klubId}/adresa": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "klubId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "$ref": "#/components/responses/klub_adresa"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import router from './router';
 import cors from 'cors';
+import api from './router/api';
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cors())
 
 app.use('/', router);
+app.use('/api', api);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');

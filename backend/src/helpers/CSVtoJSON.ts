@@ -1,4 +1,4 @@
-export default function convert(data: {[key: string]: any}[]) {
+export default function convert(data: {[key: string]: any}[]): {[key: string]: any}[] {
     
     data = data.map(d => {
 

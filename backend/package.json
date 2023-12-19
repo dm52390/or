@@ -8,12 +8,14 @@
     "start": "node dist/index.js",
     "start-ts": "ts-node src/index.ts",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "introspect": "drizzle-kit introspect:pg --config=drizzle.config.ts"
+    "introspect": "drizzle-kit introspect:pg --config=drizzle.config.ts",
+    "swagger-autogen": "ts-node src/swagger.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/fs-extra": "^11.0.4",
+    "@types/swagger-ui-express": "^4.1.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "drizzle-orm": "^0.29.0",
@@ -21,6 +23,7 @@
     "fs-extra": "^11.1.1",
     "papaparse": "^5.4.1",
     "pg": "^8.11.3",
+    "swagger-ui-express": "^5.0.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
@@ -32,6 +35,7 @@
     "concurrently": "^8.2.2",
     "drizzle-kit": "^0.20.2",
     "nodemon": "^3.0.1",
+    "swagger-autogen": "^2.23.7",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   }
