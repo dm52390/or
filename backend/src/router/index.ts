@@ -3,7 +3,7 @@ import { getFilteredData } from '../controllers/search';
 import { downloadFilteredDataCSV, downloadFilteredDataJSON } from '../controllers/download';
 
 import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from '../../openapi.json';
+import swaggerDocument from '../openapi.json';
 
 const router = express.Router();
 

@@ -1,4 +1,7 @@
 export const columns = {
+  stadion_id: {
+    display: "Identifikator stadiona",
+  },
   naziv: {
     display: "Naziv",
   },

@@ -1,5 +1,37 @@
 export function enricheStadion(stadion: { [key: string]: any }) {
     let enrichedStadion: { [key: string]: any } = {
+        "@context": {
+			"@vocab": "http://schema.org/",
+            "adresa": "address",
+            "drzava": "addressCountry",
+            "grad": "addressRegion",
+            "naziv": "legalName",
+            "ulica": "streetAddress",
+            "broj": "streetAddress",
+            "geo_lokacija": "geo",
+            "geo_sirina": "latitude",
+            "geo_duzina": "longitude",
+            "nadmorska_visina": "elevation",
+            "klubovi": "member",
+            "kapacitet_tribine": "maximumAttendeeCapacity",
+            "stadion_id": "identifier",
+            "povrsina_kompleksa": "area",
+            "broj_staza": "description",
+            "broj_skakalista_dalj": "description",
+            "broj_skakalista_motka": "description",
+            "broj_skakalista_vis": "description",
+            "broj_bacalista_koplje": "description",
+            "broj_bacalista_kugla": "description",
+            "broj_bacalista_duga_krug": "description",
+            "dozvoljeno_bacanje": "description",
+            "duzina_staze": "description",
+            "tip": "description",
+            "links": "potentialAction",
+            "href": "target",
+            "rel": "name",
+            "type": "description"
+        },
+		"@type": "StadiumOrArena",
         ...stadion,
         links: [
             {
@@ -21,6 +53,7 @@ export function enricheStadion(stadion: { [key: string]: any }) {
     };
 
     if (enrichedStadion["geo_lokacija"] != undefined) {
+        enrichedStadion["geo_lokacija"]["@type"] = "GeoCoordinates";
         enrichedStadion.links.push({
             href: "/api/stadioni/" + stadion["stadion_id"] + "/lokacija",
             rel: "lokacija",
@@ -52,6 +85,28 @@ export function enricheStadion(stadion: { [key: string]: any }) {
 
 export function enricheKlub(klub: { [key: string]: any }) {
     let enrichedKlub: { [key: string]: any } = {
+        "@context": {
+			"@vocab": "http://schema.org/",
+            "klub_naziv": "legalName",
+            "kratica": "identifier",
+            "telefon": "telephone",
+            "web_stranica": "keywords",
+            "adresa": "address",
+            "klub_drzava": "addressCountry",
+            "klub_grad": "addressRegion",
+            "klub_ulica": "streetAddress",
+            "klub_broj": "streetAddress",
+            "drzava": "addressCountry",
+            "grad": "addressRegion",
+            "naziv": "legalName",
+            "ulica": "streetAddress",
+            "broj": "streetAddress",
+            "links": "potentialAction",
+            "href": "target",
+            "rel": "name",
+            "type": "description"
+        },
+		"@type": "SportsClub",
         ...klub,
         links: [
             {
